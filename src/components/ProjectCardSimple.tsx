@@ -2,7 +2,25 @@ import React from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Github, ArrowUpRight } from "lucide-react";
+import { Github, Globe } from "lucide-react";
+
+// Custom expand icon component that matches the image
+const ExpandCornerIcon = ({ size = 20, className = "" }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <path d="M7 17L17 7" />
+    <path d="M7 7h10v10" />
+  </svg>
+);
 
 interface ProjectCardProps {
   title: string;
@@ -39,14 +57,28 @@ export function ProjectCardSimple({
       ${isActive ? 'opacity-100' : 'opacity-30 scale-95'}
       relative dark:shadow-md dark:shadow-background/20
     `}>
-      {/* Top right arrow icon for details */}
+      {/* Top right expand icon for details */}
       {slug && (
         <a 
           href={`/projects/${slug}`}
-          className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition-colors"
+          className="absolute top-4 right-4 text-muted-foreground/50 hover:text-primary/80 transition-colors"
           aria-label="View details"
         >
-          <ArrowUpRight size={20} />
+          <svg 
+            width="20" 
+            height="20" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+            className="opacity-60"
+          >
+            <path d="M20 4L4 20" style={{ opacity: 0 }} />
+            <path d="M13 4h7v7" />
+            <path d="M11 20H4v-7" />
+          </svg>
         </a>
       )}
       
@@ -65,23 +97,14 @@ export function ProjectCardSimple({
         
         {/* Main content area */}
         <div className="flex-grow">
-          {demoUrl && (
-            <a 
-              href={demoUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-3"
-            >
-              Live Demo
-            </a>
-          )}
+          {/* Content area is now clean with no buttons */}
         </div>
       </div>
       
       {/* Bottom footer with GitHub on left, tags+status on right */}
       <div className="flex items-center justify-between p-6 pt-4 border-t border-border/40">
-        {/* Left side - GitHub icon */}
-        <div>
+        {/* Left side - GitHub and web icons */}
+        <div className="flex items-center gap-3">
           {repoUrl && (
             <a 
               href={repoUrl} 
@@ -91,6 +114,17 @@ export function ProjectCardSimple({
               aria-label="GitHub Repository"
             >
               <Github size={20} />
+            </a>
+          )}
+          {demoUrl && (
+            <a 
+              href={demoUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors flex items-center justify-center"
+              aria-label="Live Demo"
+            >
+              <Globe size={20} />
             </a>
           )}
         </div>
