@@ -152,7 +152,7 @@ You might also be interested in other ${category} projects in my portfolio.
 function getStatusVariant(status) {
   switch(status) {
     case 'Active':
-      return 'default'; // primary color
+      return 'success';
     case 'Maintained':
       return 'secondary';
     case 'Archived':
