@@ -5,85 +5,22 @@ description: "Explore my AI projects, products, and concepts developed over the 
 ---
 
 import { FilterableProjectGrid } from '../components/mdx/FilterableProjectGrid';
+import featured from '../data/featured.json';
+
+
+export const projects = featured.map((p) => ({
+  title: p.title,
+  description: p.description,
+  repoUrl: p.url,
+  tags: p.language ? [p.language] : [],
+  category: p.category ?? 'AI'
+}));
 
 # Projects
 
 Here are some of the key projects I've worked on, ranging from AI agent systems to real-world products and conceptual explorations.
 
 <FilterableProjectGrid 
-  projects={[
-    {
-      title: "MCP Server Extensions",
-      description: "Advanced extensions to Multi-agent Cognitive Pipeline servers that enhance reasoning, planning, and execution capabilities.",
-      image: "/assets/images/placeholder-mcp.jpg",
-      tags: ["LLM", "Agents", "Python", "Infrastructure"],
-      repoUrl: "#",
-      category: "AI"
-    },
-    {
-      title: "Magic Apply",
-      description: "A bootstrapped startup that automated job applications using AI. Helped thousands of job seekers streamline their application process over three years.",
-      image: "/assets/images/placeholder-magic-apply.jpg",
-      tags: ["Startup", "AI", "SaaS", "React"],
-      demoUrl: "#",
-      category: "Products"
-    },
-    {
-      title: "AI Agent Team Workflows",
-      description: "Custom workflows that orchestrate multiple AI agents to enhance team productivity and collaboration.",
-      image: "/assets/images/placeholder-workflow.jpg",
-      tags: ["Workflow", "Team Productivity", "TypeScript"],
-      repoUrl: "#",
-      category: "AI"
-    },
-    {
-      title: "GoJourni",
-      description: "An AI travel planning application that generates personalized itineraries based on user preferences and constraints.",
-      image: "/assets/images/placeholder-gojourni.jpg",
-      tags: ["Travel", "AI", "Mobile App"],
-      demoUrl: "#",
-      category: "Products"
-    },
-    {
-      title: "Revibe",
-      description: "An emotion recognition system that helps users track and manage their emotional well-being.",
-      image: "/assets/images/placeholder-revibe.jpg",
-      tags: ["Health", "AI", "React Native"],
-      demoUrl: "#",
-      category: "Products"
-    },
-    {
-      title: "Climate Data Visualization",
-      description: "Interactive visualizations of climate data to help understand the impact of climate change and potential AI solutions.",
-      image: "/assets/images/placeholder-climate.jpg",
-      tags: ["Climate", "Data Viz", "D3.js"],
-      demoUrl: "#",
-      category: "Concepts"
-    },
-    {
-      title: "AI & Geography",
-      description: "Explorations of how AI can help understand and address geographical challenges and opportunities.",
-      image: "/assets/images/placeholder-geography.jpg",
-      tags: ["Geography", "AI", "Research"],
-      demoUrl: "#",
-      category: "Concepts"
-    },
-    {
-      title: "Smart City Concepts",
-      description: "Conceptual designs for AI-powered smart city infrastructure and services.",
-      image: "/assets/images/placeholder-smart-city.jpg",
-      tags: ["Urban Planning", "IoT", "AI"],
-      demoUrl: "#",
-      category: "Concepts"
-    },
-    {
-      title: "LLM-Powered Search Engine",
-      description: "A semantic search engine powered by large language models to provide more contextually relevant results.",
-      image: "/assets/images/placeholder-search.jpg",
-      tags: ["Search", "LLM", "Vector DB"],
-      repoUrl: "#",
-      category: "AI"
-    }
-  ]} 
+  projects={projects}
   categories={["AI", "Products", "Concepts"]}
 />

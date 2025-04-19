@@ -1,0 +1,31 @@
+03:26:57 [content] Syncing content
+03:26:57 [content] Synced content
+03:26:57 [types] Generated 21ms
+03:26:57 [build] output: "static"
+03:26:57 [build] mode: "static"
+03:26:57 [build] directory: /Users/mateicanavra/Documents/.nosync/DEV/portfolio/dist/
+03:26:57 [build] Collecting build info...
+03:26:57 [build] ✓ Completed in 54ms.
+03:26:57 [build] Building static entrypoints...
+03:26:58 [vite] ✓ built in 831ms
+03:26:58 [build] ✓ Completed in 850ms.
+
+ building client (vite) 
+03:26:58 [vite] transforming...
+03:26:58 [vite] ✓ 21 modules transformed.
+03:26:58 [vite] rendering chunks...
+03:26:58 [vite] computing gzip size...
+03:26:58 [vite] dist/_astro/client.bnNPSdWK.js  143.45 kB │ gzip: 46.17 kB
+03:26:58 [vite] ✓ built in 343ms
+
+ generating static routes 
+03:26:58 ▶ src/pages/about.mdx
+03:26:58   └─ /about/index.html (+15ms) 
+03:26:58 ▶ src/pages/projects.mdx
+03:26:58   └─ /projects/index.html (+3ms) 
+03:26:58 ▶ src/pages/index.mdx
+03:26:58   └─ /index.html (+3ms) 
+03:26:58 ✓ Completed in 65ms.
+
+03:26:58 [build] 3 page(s) built in 1.32s
+03:26:58 [build] Complete!

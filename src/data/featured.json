@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "magic-apply",
+    "title": "Magic Apply",
+    "repo": "Magic-Apply/magic-api",
+    "description": "Bootstrapped AI platform that streamlined the entire job‑application funnel — resume generation, tailored outreach, and workflow automation.",
+    "language": "TypeScript",
+    "stars": 1,
+    "url": "https://github.com/Magic-Apply/magic-api",
+    "category": "Products"
+  },
+  {
+    "slug": "mcp-graphiti",
+    "title": "MCP Graphiti Server",
+    "repo": "rawr-ai/mcp-graphiti",
+    "description": "High‑throughput MCP server for knowledge‑graph management via Graphiti.",
+    "language": "Python",
+    "stars": 2,
+    "url": "https://github.com/rawr-ai/mcp-graphiti",
+    "category": "AI"
+  }
+]
