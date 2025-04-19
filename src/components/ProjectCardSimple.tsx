@@ -29,7 +29,7 @@ export function ProjectCardSimple({
   // Use simple opacity and transform transitions instead of 3D flip
   return (
     <div className={`
-      border border-black bg-transparent rounded-lg shadow-sm overflow-hidden
+      border border-black bg-card text-card-foreground rounded-lg shadow-sm overflow-hidden
       transition-all duration-500 ease-in-out
       ${isActive ? 'opacity-100' : 'opacity-30 scale-95'}
     `}>

@@ -29,7 +29,7 @@ export function ProjectCard({
   
   return (
     <Card className={`
-      overflow-hidden border border-black bg-transparent
+      overflow-hidden border border-black bg-card text-card-foreground
       transition-all duration-500 ease-in-out
       ${isActive ? 'opacity-100 scale-100 animate-fade-in' : 'opacity-30 scale-95'}
     `}>
