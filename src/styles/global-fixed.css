@@ -57,11 +57,6 @@
   body {
     @apply bg-background text-foreground;
     font-family: "PP Neue Montreal Mono", monospace;
-    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h4v4H0V0zm8 0h4v4H8V0zm8 0h4v4h-4V0zm0 8h4v4h-4V8zm0 8h4v4h-4v-4zm-8 0h4v4H8v-4zm-8 0h4v4H0v-4zm0-8h4v4H0V8zm8 0h4v4H8V8z' fill='%23b2a89a' fill-opacity='0.05'/%3E%3C/svg%3E");
-  }
-  
-  .dark body {
-    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h4v4H0V0zm8 0h4v4H8V0zm8 0h4v4h-4V0zm0 8h4v4h-4V8zm0 8h4v4h-4v-4zm-8 0h4v4H8v-4zm-8 0h4v4H0v-4zm0-8h4v4H0V8zm8 0h4v4H8V8z' fill='%23675a4a' fill-opacity='0.1'/%3E%3C/svg%3E");
   }
 }
 
@@ -87,4 +82,4 @@
     gap: 1.5rem;
     perspective: 1000px;
   }
-}
+} 

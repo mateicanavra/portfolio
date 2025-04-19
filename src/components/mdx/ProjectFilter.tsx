@@ -3,14 +3,16 @@ import { Button } from "@/components/ui/button";
 
 interface ProjectFilterProps {
   categories: string[];
+  activeCategory: string; // Add activeCategory prop
   onFilterChange: (category: string) => void;
 }
 
-export function ProjectFilter({ categories, onFilterChange }: ProjectFilterProps) {
-  const [activeCategory, setActiveCategory] = useState("all");
+export function ProjectFilter({ categories, activeCategory, onFilterChange }: ProjectFilterProps) {
+  // Remove internal state, use prop instead
+  // const [activeCategory, setActiveCategory] = useState("all");
 
   const handleClick = (category: string) => {
-    setActiveCategory(category);
+    // No need to setActiveCategory locally
     onFilterChange(category);
   };
 

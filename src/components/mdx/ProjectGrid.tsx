@@ -1,5 +1,5 @@
 import React from "react";
-import { ProjectCard } from "../ProjectCard";
+import { ProjectCardSimple } from "../ProjectCardSimple";
 
 interface Project {
   title: string;
@@ -8,17 +8,23 @@ interface Project {
   image?: string;
   demoUrl?: string;
   repoUrl?: string;
+  category?: string;
 }
 
 interface ProjectGridProps {
   projects: Project[];
+  activeCategory: string;
 }
 
-export function ProjectGrid({ projects }: ProjectGridProps) {
+export function ProjectGrid({ projects, activeCategory }: ProjectGridProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+    <div className="my-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {projects.map((project, index) => (
-        <ProjectCard key={index} {...project} />
+        <ProjectCardSimple
+          key={project.title}
+          {...project}
+          activeCategory={activeCategory}
+        />
       ))}
     </div>
   );

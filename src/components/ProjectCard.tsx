@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import '../styles/utilities.css';
 
 interface ProjectCardProps {
   title: string;
@@ -9,6 +10,8 @@ interface ProjectCardProps {
   image?: string;
   demoUrl?: string;
   repoUrl?: string;
+  category?: string; // Add category passed via spread
+  activeCategory: string; // Add activeCategory prop
 }
 
 export function ProjectCard({
@@ -18,9 +21,19 @@ export function ProjectCard({
   image,
   demoUrl,
   repoUrl,
+  category, // Destructure category
+  activeCategory, // Destructure activeCategory
 }: ProjectCardProps) {
+  // Determine if this card should be "active" based on the cycling category
+  const isActive = activeCategory === "all" || category?.toLowerCase() === activeCategory.toLowerCase();
+  
   return (
-    <Card className="overflow-hidden">
+    <Card className={`
+      overflow-hidden border border-black bg-transparent
+      transition-all duration-500 ease-in-out
+      ${isActive ? 'opacity-100 scale-100 animate-fade-in' : 'opacity-30 scale-95'}
+    `}>
+      {/* Moved comment inside Card */}
       {image && (
         <div className="w-full h-48 overflow-hidden">
           <img
