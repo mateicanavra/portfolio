@@ -1,0 +1,76 @@
+---
+layout: ../layouts/Layout.astro
+title: "Your Name - AI Product Manager & Engineer"
+---
+
+import { Callout } from '../components/ui/callout';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '../components/ui/card';
+import { Button } from '../components/ui/button';
+
+# Hello, I'm Your Name
+
+I'm a product manager and engineer specializing in AI-driven products. I help teams build useful, ethical, and well-designed AI applications.
+
+<Callout type="default" title="Currently available for projects">
+  I'm currently taking on new projects and collaborations. Feel free to [reach out](/contact) if you'd like to work together.
+</Callout>
+
+## About Me
+
+I have over a decade of experience working at the intersection of product management, engineering, and AI. My focus areas include:
+
+- Building AI agent systems that augment human capabilities
+- Creating intuitive interfaces for complex AI-powered applications
+- Developing ethical AI products that respect user privacy and agency
+
+## Featured Projects
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+  <Card>
+    <CardHeader>
+      <CardTitle>MCP Server Extensions</CardTitle>
+      <CardDescription>Multi-agent Cognitive Pipeline</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <p>Advanced extensions to enhance reasoning, planning, and execution capabilities of AI systems.</p>
+    </CardContent>
+    <CardFooter>
+      <Button asChild variant="outline" size="sm">
+        <a href="/projects">Learn More</a>
+      </Button>
+    </CardFooter>
+  </Card>
+  
+  <Card>
+    <CardHeader>
+      <CardTitle>Magic Apply</CardTitle>
+      <CardDescription>AI-powered job applications</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <p>A bootstrapped startup that automated job applications using AI, helping thousands of job seekers.</p>
+    </CardContent>
+    <CardFooter>
+      <Button asChild variant="outline" size="sm">
+        <a href="/projects">Learn More</a>
+      </Button>
+    </CardFooter>
+  </Card>
+</div>
+
+## Areas of Interest
+
+I'm particularly interested in how AI can be applied to solve real-world problems in these areas:
+
+- **Productivity and Workflow Optimization** - Building AI agents that help knowledge workers be more effective
+- **Creative Tools** - Empowering artists, writers, and designers with AI-assisted tools
+- **Health and Wellbeing** - Creating applications that help people live healthier lives
+
+<Callout type="success" title="Let's connect">
+  The best way to reach me is via [email](mailto:your.email@example.com) or [Twitter](https://twitter.com/yourusername). I'm always open to interesting conversations!
+</Callout>
+
+<div className="flex justify-center mt-10">
+  <Button asChild size="lg">
+    <a href="/projects">View All Projects</a>
+  </Button>
+</div>

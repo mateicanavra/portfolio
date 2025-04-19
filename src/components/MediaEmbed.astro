@@ -1,0 +1,164 @@
+---
+export interface Props {
+  type: 'video' | 'image' | 'tweet' | 'github' | 'youtube' | 'figma' | 'sandbox';
+  src: string;
+  title?: string;
+  alt?: string;
+  caption?: string;
+  width?: string | number;
+  height?: string | number;
+  aspectRatio?: string;
+  className?: string;
+}
+
+const { 
+  type, 
+  src, 
+  title = '', 
+  alt = title, 
+  caption, 
+  width, 
+  height, 
+  aspectRatio = '16/9',
+  className = ''
+} = Astro.props as Props;
+
+// Derive source URL formats
+const getYouTubeId = (url: string): string | null => {
+  const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[7].length === 11) ? match[7] : null;
+};
+
+const getTwitterId = (url: string): string | null => {
+  const regExp = /twitter.com\/\w+\/status\/(\d+)/;
+  const match = url.match(regExp);
+  return match ? match[1] : null;
+};
+
+const getFigmaEmbedUrl = (url: string): string => {
+  return `https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(url)}`;
+};
+
+// GitHub repository pattern: username/repo
+const getGitHubRepo = (url: string): string | null => {
+  const regExp = /github.com\/([^/]+\/[^/]+)/;
+  const match = url.match(regExp);
+  return match ? match[1] : null;
+};
+
+// Convert CodeSandbox full URL to embed URL
+const getCodeSandboxEmbedUrl = (url: string): string => {
+  return url.replace('codesandbox.io/s/', 'codesandbox.io/embed/');
+};
+
+const mediaStyle = {
+  container: "my-6 overflow-hidden rounded-lg",
+  caption: "text-sm text-dark-500 dark:text-dark-400 mt-2 text-center italic",
+  image: "w-full h-auto",
+  aspectRatio: `aspect-[${aspectRatio}]`
+};
+---
+
+<figure class={`${mediaStyle.container} ${className}`}>
+  {type === 'image' && (
+    <img 
+      src={src} 
+      alt={alt} 
+      width={width} 
+      height={height} 
+      loading="lazy" 
+      class={mediaStyle.image} 
+    />
+  )}
+  
+  {type === 'video' && (
+    <div class={mediaStyle.aspectRatio}>
+      <video 
+        src={src} 
+        controls 
+        poster={width && height ? undefined : ""}
+        width={width} 
+        height={height}
+        class="w-full h-full object-cover"
+      >
+        <track kind="captions" />
+      </video>
+    </div>
+  )}
+  
+  {type === 'youtube' && (
+    <div class={mediaStyle.aspectRatio}>
+      <iframe
+        src={`https://www.youtube.com/embed/${getYouTubeId(src)}`}
+        title={title || 'YouTube video player'}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+        class="w-full h-full"
+      ></iframe>
+    </div>
+  )}
+  
+  {type === 'tweet' && (
+    <div class="twitter-embed" data-tweet-id={getTwitterId(src)}>
+      <blockquote class="twitter-tweet" data-dnt="true">
+        <a href={src}>Loading tweet...</a>
+      </blockquote>
+      <script is:inline async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+  )}
+  
+  {type === 'github' && (
+    <div class="github-embed">
+      {getGitHubRepo(src) && (
+        <div class="border dark:border-dark-700 rounded-lg overflow-hidden">
+          <div class="bg-gray-100 dark:bg-dark-800 p-4 flex items-center">
+            <svg class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+            </svg>
+            <a href={src} target="_blank" rel="noopener noreferrer" class="font-medium text-primary-600 dark:text-primary-400 hover:underline">
+              {getGitHubRepo(src)}
+            </a>
+          </div>
+          <div class="p-4">
+            <a href={src} target="_blank" rel="noopener noreferrer" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded inline-block text-sm font-medium transition-colors">
+              View Repository
+            </a>
+          </div>
+        </div>
+      )}
+    </div>
+  )}
+  
+  {type === 'figma' && (
+    <div class={mediaStyle.aspectRatio}>
+      <iframe
+        src={getFigmaEmbedUrl(src)}
+        title={title || 'Figma design'}
+        allowfullscreen
+        loading="lazy"
+        class="w-full h-full border-0"
+      ></iframe>
+    </div>
+  )}
+  
+  {type === 'sandbox' && (
+    <div class={mediaStyle.aspectRatio}>
+      <iframe
+        src={getCodeSandboxEmbedUrl(src)}
+        title={title || 'CodeSandbox example'}
+        allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+        sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+        loading="lazy"
+        class="w-full h-full border-0"
+      ></iframe>
+    </div>
+  )}
+  
+  {caption && (
+    <figcaption class={mediaStyle.caption}>
+      {caption}
+    </figcaption>
+  )}
+</figure> 

@@ -1,0 +1,75 @@
+---
+const { title = "", description = "Portfolio of a product manager & engineer focused on AI‑driven products" } = Astro.props;
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import { MDXProvider } from "../components/MDXProvider";
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    {title && <title>{title}</title>}
+    <script is:inline>
+      // Check for dark mode preference
+      const isDark = 
+        localStorage.getItem('theme') === 'dark' || 
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col bg-background text-foreground">
+    <Navigation />
+    <main class="flex-grow container mx-auto px-4 py-8 md:py-12 max-w-4xl">
+      <MDXProvider>
+        <article class="prose dark:prose-invert max-w-none">
+          <slot />
+        </article>
+      </MDXProvider>
+    </main>
+    <Footer />
+    <script>
+      // Theme toggle functionality
+      document.addEventListener('DOMContentLoaded', () => {
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        if (themeToggle) {
+          themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            
+            // Toggle dark class
+            document.documentElement.classList.toggle('dark');
+            
+            // Store preference
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  main {
+    max-width: 75ch;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+</style>

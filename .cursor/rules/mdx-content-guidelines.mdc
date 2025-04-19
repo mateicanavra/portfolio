@@ -1,0 +1,12 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# MDX Content Guidelines
+
+## Content Structure
+- Write clean, semantic MDX that focuses on content
+- Create a clear hierarchy using headings (h1, h2, h3)
+- Use components to enhance content, not just for decoration
+- Break content into logical sections for better readability

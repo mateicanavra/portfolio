@@ -1,0 +1,47 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# Component Design Principles
+
+## Core UI Components
+- [src/components/ui/card.tsx](mdc:src/components/ui/card.tsx) - Use for content containers and project cards
+- [src/components/ui/button.tsx](mdc:src/components/ui/button.tsx) - Use for all interactive elements
+- [src/components/ui/callout.tsx](mdc:src/components/ui/callout.tsx) - Use for highlighting important information
+
+## MDX Component Integration
+- [src/components/MDXComponents.tsx](mdc:src/components/MDXComponents.tsx) - The central hub for all styled MDX components
+- [src/components/MDXProvider.tsx](mdc:src/components/MDXProvider.tsx) - Enables component use in MDX files
+- [src/components/MDXContent.tsx](mdc:src/components/MDXContent.tsx) - Wrapper for MDX content styling
+
+## Project Display Components
+- [src/components/mdx/ProjectGrid.tsx](mdc:src/components/mdx/ProjectGrid.tsx) - Basic grid layout for projects
+- [src/components/mdx/FilterableProjectGrid.tsx](mdc:src/components/mdx/FilterableProjectGrid.tsx) - Grid with filtering capabilities
+- [src/components/mdx/ProjectFilter.tsx](mdc:src/components/mdx/ProjectFilter.tsx) - Filter UI for project categories
+
+## Component Design Guidelines
+
+### Component Structure
+- Keep components focused on a single responsibility
+- Use TypeScript for props interface definitions
+- Leverage Tailwind CSS for styling
+- Ensure all components are accessible
+
+### Styling Approach
+- Use Tailwind utility classes consistently
+- Maintain the design token system from the theme
+- Create consistent spacing and sizing across components
+- Use CSS variables for theming and dark mode support
+
+### Visual Consistency
+- Maintain consistent border radius (var(--radius))
+- Use the color system defined in tailwind.config.js
+- Ensure proper spacing between elements
+- Apply consistent hover and focus states
+
+### Accessibility
+- Include proper ARIA attributes
+- Ensure keyboard navigation works
+- Maintain sufficient color contrast
+- Provide text alternatives for visual elements
