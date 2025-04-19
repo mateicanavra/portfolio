@@ -13,10 +13,11 @@ export const projects = featured.map((p) => ({
   description: p.description,
   repoUrl: p.url,
   tags: p.language ? [p.language] : [],
-  category: p.category ?? 'AI'
+  category: p.category ?? 'AI',
+  slug: p.slug
 }));
 
-# Work
+# Projects
 
 Here are some of the key projects I've worked on, ranging from AI agent systems to real-world products and conceptual explorations.
 

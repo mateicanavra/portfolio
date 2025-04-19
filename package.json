@@ -3,10 +3,11 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "bun src/scripts/generate-project-pages.js && astro dev",
+    "build": "bun src/scripts/generate-project-pages.js && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "generate-projects": "bun src/scripts/generate-project-pages.js"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.4",

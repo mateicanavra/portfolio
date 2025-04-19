@@ -11,6 +11,7 @@ interface ProjectCardProps {
   repoUrl?: string;
   category?: string;
   activeCategory: string;
+  slug?: string;
 }
 
 export function ProjectCardSimple({
@@ -22,6 +23,7 @@ export function ProjectCardSimple({
   repoUrl,
   category,
   activeCategory,
+  slug,
 }: ProjectCardProps) {
   // Determine if this card should be "active" based on the cycling category
   const isActive = activeCategory === "all" || category?.toLowerCase() === activeCategory.toLowerCase();
@@ -44,7 +46,13 @@ export function ProjectCardSimple({
       )}
       <div className="flex-1 flex flex-col">
         <div className="flex flex-col space-y-1.5 p-6 pb-3">
-          <h3 className="text-2xl font-semibold leading-none tracking-tight line-clamp-2">{title}</h3>
+          {slug ? (
+            <a href={`/projects/${slug}`} className="hover:underline">
+              <h3 className="text-2xl font-semibold leading-none tracking-tight line-clamp-2">{title}</h3>
+            </a>
+          ) : (
+            <h3 className="text-2xl font-semibold leading-none tracking-tight line-clamp-2">{title}</h3>
+          )}
           <p className="text-sm text-muted-foreground line-clamp-3">{description}</p>
         </div>
         
@@ -74,6 +82,14 @@ export function ProjectCardSimple({
             className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-3"
           >
             Repository
+          </a>
+        )}
+        {slug && (
+          <a 
+            href={`/projects/${slug}`}
+            className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-3 ml-2"
+          >
+            Details
           </a>
         )}
         {demoUrl && (
