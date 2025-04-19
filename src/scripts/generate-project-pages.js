@@ -18,7 +18,7 @@ if (!fs.existsSync(projectsDir)) {
 
 // Function to create a project MDX file
 function createProjectMDX(project) {
-  const { slug, title, description, language, url, category, repo, stars } = project;
+  const { slug, title, description, language, url, category, repo, stars, status } = project;
   
   // Format the repo name for display
   const repoName = repo || "";
@@ -114,8 +114,9 @@ description: "${description}"
 ---
 
 import { Callout } from "@/components/ui/callout";
+import { Badge } from "@/components/ui/badge";
 
-# ${title}
+# ${title} <Badge variant="${getStatusVariant(status)}">${status}</Badge>
 
 ${description}
 
@@ -145,6 +146,24 @@ You might also be interested in other ${category} projects in my portfolio.
   const filePath = path.join(projectsDir, `${slug}.mdx`);
   fs.writeFileSync(filePath, mdxContent);
   console.log(`Created: ${path.join('src/pages/projects', `${slug}.mdx`)}`);
+}
+
+// Helper function to determine badge variant based on status
+function getStatusVariant(status) {
+  switch(status) {
+    case 'Active':
+      return 'default'; // primary color
+    case 'Maintained':
+      return 'secondary';
+    case 'Archived':
+      return 'outline';
+    case 'Paused':
+      return 'destructive';
+    case 'Concept':
+      return 'accent';
+    default:
+      return 'default';
+  }
 }
 
 // Generate MDX files for each project

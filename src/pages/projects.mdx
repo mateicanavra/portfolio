@@ -14,7 +14,8 @@ export const projects = featured.map((p) => ({
   repoUrl: p.url,
   tags: p.language ? [p.language] : [],
   category: p.category ?? 'AI',
-  slug: p.slug
+  slug: p.slug,
+  status: p.status
 }));
 
 # Projects

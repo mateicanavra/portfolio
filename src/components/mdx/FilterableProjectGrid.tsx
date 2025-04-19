@@ -10,6 +10,8 @@ interface Project {
   demoUrl?: string;
   repoUrl?: string;
   category?: string;
+  status?: string;
+  slug?: string;
 }
 
 interface FilterableProjectGridProps {

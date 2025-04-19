@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 interface ProjectCardProps {
   title: string;
@@ -12,6 +13,7 @@ interface ProjectCardProps {
   category?: string;
   activeCategory: string;
   slug?: string;
+  status?: string;
 }
 
 export function ProjectCardSimple({
@@ -24,6 +26,7 @@ export function ProjectCardSimple({
   category,
   activeCategory,
   slug,
+  status
 }: ProjectCardProps) {
   // Determine if this card should be "active" based on the cycling category
   const isActive = activeCategory === "all" || category?.toLowerCase() === activeCategory.toLowerCase();
@@ -46,13 +49,20 @@ export function ProjectCardSimple({
       )}
       <div className="flex-1 flex flex-col">
         <div className="flex flex-col space-y-1.5 p-6 pb-3">
-          {slug ? (
-            <a href={`/projects/${slug}`} className="hover:underline">
+          <div className="flex justify-between items-start">
+            {slug ? (
+              <a href={`/projects/${slug}`} className="hover:underline">
+                <h3 className="text-2xl font-semibold leading-none tracking-tight line-clamp-2">{title}</h3>
+              </a>
+            ) : (
               <h3 className="text-2xl font-semibold leading-none tracking-tight line-clamp-2">{title}</h3>
-            </a>
-          ) : (
-            <h3 className="text-2xl font-semibold leading-none tracking-tight line-clamp-2">{title}</h3>
-          )}
+            )}
+            {status && (
+              <Badge variant={getStatusVariant(status)} className="ml-2 flex-shrink-0">
+                {status}
+              </Badge>
+            )}
+          </div>
           <p className="text-sm text-muted-foreground line-clamp-3">{description}</p>
         </div>
         
@@ -105,4 +115,22 @@ export function ProjectCardSimple({
       </div>
     </div>
   );
+}
+
+// Helper function to determine badge variant based on status
+function getStatusVariant(status?: string) {
+  switch(status) {
+    case 'Active':
+      return 'default'; // primary color
+    case 'Maintained':
+      return 'secondary';
+    case 'Archived':
+      return 'outline';
+    case 'Paused':
+      return 'destructive';
+    case 'Concept':
+      return 'accent';
+    default:
+      return 'default';
+  }
 } 

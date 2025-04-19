@@ -7,7 +7,8 @@
     "language": "TypeScript",
     "stars": 1,
     "url": "https://github.com/Magic-Apply/magic-api",
-    "category": "Products"
+    "category": "Products",
+    "status": "Active"
   },
   {
     "slug": "mcp-graphiti",
@@ -17,7 +18,8 @@
     "language": "Python",
     "stars": 2,
     "url": "https://github.com/rawr-ai/mcp-graphiti",
-    "category": "AI"
+    "category": "AI",
+    "status": "Active"
   },
   {
     "slug": "rawr-ai-core",
@@ -27,7 +29,8 @@
     "language": "Python",
     "stars": 9,
     "url": "https://github.com/rawr-ai/ai",
-    "category": "AI"
+    "category": "AI",
+    "status": "Active"
   },
   {
     "slug": "mcp-linear",
@@ -37,7 +40,8 @@
     "language": "TypeScript",
     "stars": 0,
     "url": "https://github.com/rawr-ai/mcp-linear",
-    "category": "AI"
+    "category": "AI",
+    "status": "Maintained"
   },
   {
     "slug": "mcp-filesystem",
@@ -47,7 +51,8 @@
     "language": "TypeScript",
     "stars": 0,
     "url": "https://github.com/rawr-ai/mcp-filesystem",
-    "category": "AI"
+    "category": "AI",
+    "status": "Maintained"
   },
   {
     "slug": "revibe",
@@ -57,7 +62,8 @@
     "language": "CSS",
     "stars": 1,
     "url": "https://github.com/spaceandrew/revibe",
-    "category": "Products"
+    "category": "Products",
+    "status": "Archived"
   },
   {
     "slug": "antarctic-temp-trak",
@@ -67,6 +73,7 @@
     "language": "TypeScript",
     "stars": 0,
     "url": "https://github.com/rogue-climate/antarctic-temp-trak",
-    "category": "Concepts"
+    "category": "Concepts",
+    "status": "Concept"
   }
 ]
