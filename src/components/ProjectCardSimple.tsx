@@ -30,11 +30,11 @@ export function ProjectCardSimple({
   return (
     <div className={`
       border border-black bg-card text-card-foreground rounded-lg shadow-sm overflow-hidden
-      transition-all duration-500 ease-in-out
+      transition-all duration-500 ease-in-out h-full w-full flex flex-col
       ${isActive ? 'opacity-100' : 'opacity-30 scale-95'}
     `}>
       {image && (
-        <div className="w-full h-48 overflow-hidden">
+        <div className="w-full overflow-hidden" style={{ maxHeight: "35%" }}>
           <img
             src={image}
             alt={title}
@@ -42,11 +42,11 @@ export function ProjectCardSimple({
           />
         </div>
       )}
-      <div className="flex flex-col space-y-1.5 p-6">
-        <h3 className="text-2xl font-semibold leading-none tracking-tight">{title}</h3>
-        <p className="text-sm text-muted-foreground">{description}</p>
+      <div className="flex flex-col space-y-1.5 p-6 pb-3">
+        <h3 className="text-2xl font-semibold leading-none tracking-tight line-clamp-2">{title}</h3>
+        <p className="text-sm text-muted-foreground line-clamp-3">{description}</p>
       </div>
-      <div className="p-6 pt-0">
+      <div className="px-6 flex-grow">
         {tags.length > 0 && (
           <div className="flex flex-wrap gap-2">
             {tags.map((tag) => (
@@ -60,7 +60,7 @@ export function ProjectCardSimple({
           </div>
         )}
       </div>
-      <div className="flex items-center p-6 pt-0">
+      <div className="flex items-center p-6 pt-3 mt-auto">
         {demoUrl && (
           <a 
             href={demoUrl} 
