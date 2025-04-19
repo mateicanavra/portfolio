@@ -18,5 +18,55 @@
     "stars": 2,
     "url": "https://github.com/rawr-ai/mcp-graphiti",
     "category": "AI"
+  },
+  {
+    "slug": "rawr-ai-core",
+    "title": "RAWr AI Core",
+    "repo": "rawr-ai/ai",
+    "description": "Foundation codebase for RAWr‑AI agentic workflows and multi‑agent experiments.",
+    "language": "Python",
+    "stars": 9,
+    "url": "https://github.com/rawr-ai/ai",
+    "category": "AI"
+  },
+  {
+    "slug": "mcp-linear",
+    "title": "MCP Linear Server",
+    "repo": "rawr-ai/mcp-linear",
+    "description": "Model Context Protocol server that syncs project data with Linear and exposes AI‑ready endpoints.",
+    "language": "TypeScript",
+    "stars": 0,
+    "url": "https://github.com/rawr-ai/mcp-linear",
+    "category": "AI"
+  },
+  {
+    "slug": "mcp-filesystem",
+    "title": "MCP Filesystem Server",
+    "repo": "rawr-ai/mcp-filesystem",
+    "description": "Lightweight MCP server for local & remote filesystem operations with agent access controls.",
+    "language": "TypeScript",
+    "stars": 0,
+    "url": "https://github.com/rawr-ai/mcp-filesystem",
+    "category": "AI"
+  },
+  {
+    "slug": "revibe",
+    "title": "Revibe",
+    "repo": "spaceandrew/revibe",
+    "description": "Emotion‑recognition prototype helping users track and visualise their emotional well‑being.",
+    "language": "CSS",
+    "stars": 1,
+    "url": "https://github.com/spaceandrew/revibe",
+    "category": "Products"
+  },
+  {
+    "slug": "antarctic-temp-trak",
+    "title": "Antarctic Temp‑Trak",
+    "repo": "rogue-climate/antarctic-temp-trak",
+    "description": "Conceptual climate‑tech dashboard visualising Antarctic temperature anomalies using AI‑generated insights.",
+    "language": "TypeScript",
+    "stars": 0,
+    "url": "https://github.com/rogue-climate/antarctic-temp-trak",
+    "category": "Concepts"
   }
 ]
