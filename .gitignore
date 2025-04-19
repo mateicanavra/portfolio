@@ -25,5 +25,8 @@ pnpm-debug.log*
 // Bun cache directory
 /.bun/
 
+# Ignore local copy of the old "tasty-transit" starter project
+tasty-transit/
+
 # Local environment variables
 .env.local
