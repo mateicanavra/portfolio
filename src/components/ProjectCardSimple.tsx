@@ -32,65 +32,39 @@ export function ProjectCardSimple({
   // Determine if this card should be "active" based on the cycling category
   const isActive = activeCategory === "all" || category?.toLowerCase() === activeCategory.toLowerCase();
   
-  // Use simple opacity and transform transitions instead of 3D flip
   return (
     <div className={`
       border border-black bg-card text-card-foreground rounded-lg shadow-sm overflow-hidden
       transition-all duration-500 ease-in-out h-full w-full flex flex-col justify-between
       ${isActive ? 'opacity-100' : 'opacity-30 scale-95'}
+      relative
     `}>
-      {image && (
-        <div className="w-full overflow-hidden" style={{ maxHeight: "35%" }}>
-          <img
-            src={image}
-            alt={title}
-            className="w-full h-full object-cover transition-transform hover:scale-105"
-          />
-        </div>
+      {/* Top right arrow icon for details */}
+      {slug && (
+        <a 
+          href={`/projects/${slug}`}
+          className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition-colors"
+          aria-label="View details"
+        >
+          <ArrowUpRight size={20} />
+        </a>
       )}
-      <div className="flex-1 flex flex-col">
-        <div className="flex flex-col space-y-1.5 p-6 pb-3">
-          <div className="flex justify-between items-start">
-            {slug ? (
-              <a href={`/projects/${slug}`} className="hover:underline">
-                <h3 className="text-2xl font-semibold leading-none tracking-tight line-clamp-2">{title}</h3>
-              </a>
-            ) : (
+      
+      <div className="p-6 pt-8 flex-grow">
+        {/* Title and description */}
+        <div className="mb-4">
+          {slug ? (
+            <a href={`/projects/${slug}`} className="hover:underline">
               <h3 className="text-2xl font-semibold leading-none tracking-tight line-clamp-2">{title}</h3>
-            )}
-            {slug && (
-              <a 
-                href={`/projects/${slug}`}
-                className="text-muted-foreground hover:text-primary transition-colors ml-2"
-                aria-label="View details"
-              >
-                <ArrowUpRight size={20} />
-              </a>
-            )}
-          </div>
-          <p className="text-sm text-muted-foreground line-clamp-3">{description}</p>
+            </a>
+          ) : (
+            <h3 className="text-2xl font-semibold leading-none tracking-tight line-clamp-2">{title}</h3>
+          )}
+          <p className="text-sm text-muted-foreground mt-2 line-clamp-3">{description}</p>
         </div>
         
-        <div className="px-6 flex-grow">
-          {/* Content body, keeping this empty or for future content */}
-        </div>
-      </div>
-      
-      {/* Footer with reorganized elements */}
-      <div className="flex items-center justify-between p-6 pt-3 mt-auto">
-        <div className="flex items-center">
-          {repoUrl && (
-            <a 
-              href={repoUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors flex items-center justify-center mr-4"
-              aria-label="GitHub Repository"
-            >
-              <Github size={20} />
-            </a>
-          )}
-          
+        {/* Main content area */}
+        <div className="flex-grow">
           {demoUrl && (
             <a 
               href={demoUrl} 
@@ -102,7 +76,26 @@ export function ProjectCardSimple({
             </a>
           )}
         </div>
+      </div>
+      
+      {/* Bottom footer with GitHub on left, tags+status on right */}
+      <div className="flex items-center justify-between p-6 pt-4 border-t border-border/40">
+        {/* Left side - GitHub icon */}
+        <div>
+          {repoUrl && (
+            <a 
+              href={repoUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors flex items-center justify-center"
+              aria-label="GitHub Repository"
+            >
+              <Github size={20} />
+            </a>
+          )}
+        </div>
         
+        {/* Right side - Language tag followed by status badge */}
         <div className="flex items-center gap-3">
           {tags.length > 0 && (
             <span
