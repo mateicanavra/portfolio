@@ -34,10 +34,10 @@ export function ProjectCardSimple({
   
   return (
     <div className={`
-      border border-black bg-card text-card-foreground rounded-lg shadow-sm overflow-hidden
+      border border-border bg-card text-card-foreground rounded-lg shadow-sm overflow-hidden
       transition-all duration-500 ease-in-out h-full w-full flex flex-col justify-between
       ${isActive ? 'opacity-100' : 'opacity-30 scale-95'}
-      relative
+      relative dark:shadow-md dark:shadow-background/20
     `}>
       {/* Top right arrow icon for details */}
       {slug && (
