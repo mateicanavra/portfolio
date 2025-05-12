@@ -31,3 +31,5 @@ tasty-transit/
 
 # Local environment variables
 .env.local
+
+.early.coverage
