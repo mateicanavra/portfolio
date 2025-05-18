@@ -31,7 +31,7 @@ import "../styles/global.css";
   </head>
   <body class="min-h-screen flex flex-col bg-background text-foreground">
     <Navigation />
-    <main class="flex-grow container mx-auto px-4 py-8 md:py-12 max-w-4xl">
+    <main class="flex-grow container mx-auto px-6 py-10 md:py-16 max-w-5xl">
       <MDXProvider>
         <article class="prose dark:prose-invert max-w-none">
           <slot />
@@ -69,8 +69,8 @@ import "../styles/global.css";
   }
 
   main {
-    max-width: 75ch;
+    max-width: 64rem;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 2rem 1.5rem;
   }
 </style>
